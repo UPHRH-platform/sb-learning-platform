@@ -315,9 +315,6 @@ asset-enrichment:
       size.pixel = 150
     }
     content_youtube_apikey="{{ youtube_api_key }}"
-    gcloud_client_key: "{{ cloud_public_storage_accountname }}"
-    gcloud_private_secret: "{{ cloud_public_storage_secret }}"
-    gcloud_storage_bucket: "{{ cloud_storage_content_bucketname }}"
     cloud_storage_type="{{ cloud_service_provider }}"
     cloud_storage_key="{{ cloud_public_storage_accountname }}"
     cloud_storage_secret="{{ cloud_public_storage_secret }}"
@@ -729,7 +726,10 @@ content-publish:
     compositesearch.index.name = "{{ compositesearch_index_name }}"
     search.document.type = "cs"
     enableDIALContextUpdate = "Yes"
-
+  
+    gcloud_client_key: "{{ cloud_public_storage_accountname }}"
+    gcloud_private_secret: "{{ cloud_public_storage_secret }}"
+    gcloud_storage_bucket: "{{ cloud_storage_content_bucketname }}"
     cloud_storage_type="{{ cloud_service_provider }}"
     cloud_storage_key="{{ cloud_public_storage_accountname }}"
     cloud_storage_secret="{{ cloud_public_storage_secret }}"
