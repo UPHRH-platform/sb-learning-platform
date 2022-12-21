@@ -296,7 +296,7 @@ flink_job_names:
 
 ### Global vars
 middleware_course_keyspace: "sunbird_courses"
-cloud_store: azure
+cloud_store: gcloud
 
 
 ### Search Indexer Related Vars
