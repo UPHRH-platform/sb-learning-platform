@@ -73,7 +73,7 @@ base_config: |
     }
     job {
       env = "{{ env_name }}"
-      enable.distributed.checkpointing = true
+      enable.distributed.checkpointing = false
       statebackend {
         blob {
           storage {
@@ -271,7 +271,7 @@ questionset-publish:
       table = "questionset_hierarchy"
     }
     print_service.base_url = "{{ kp_print_service_base_url }}"
-    cloud_storage_type="{{ cloud_store }}"
+    cloud_storage_type="{{ cloud_service_provider }}"
     cloud_storage_key="{{ cloud_storage_key }}"
     cloud_storage_secret="{{ cloud_storage_secret }}"
     cloud_storage_container="{{ cloud_storage_container }}"
@@ -475,7 +475,7 @@ asset-enrichment:
       size.pixel = 150
     }
     content_youtube_apikey="{{ youtube_api_key }}"
-    cloud_storage_type="{{ cloud_store }}"
+    cloud_storage_type="{{ cloud_service_provider }}"
     cloud_storage_key="{{ cloud_storage_key }}"
     cloud_storage_secret="{{ cloud_storage_secret }}"
     cloud_storage_container="{{ cloud_storage_container }}"
@@ -535,7 +535,7 @@ auto-creator-v2:
     service {
       content.basePath = "{{ kp_content_service_base_url }}"
     }
-    cloud_storage_type="{{ cloud_store }}"
+    cloud_storage_type="{{ cloud_service_provider }}"
     cloud_storage_key="{{ cloud_storage_key }}"
     cloud_storage_secret="{{ cloud_storage_secret }}"
     cloud_storage_container="{{ cloud_storage_container }}"
@@ -583,7 +583,7 @@ content-auto-creator:
       learning_service.basePath = "{{ kp_learning_service_base_url }}"
     }
 
-    cloud_storage_type="{{ cloud_store }}"
+    cloud_storage_type="{{ cloud_service_provider }}"
     cloud_storage_key="{{ cloud_storage_key }}"
     cloud_storage_secret="{{ cloud_storage_secret }}"
     cloud_storage_container="{{ cloud_storage_container }}"
@@ -966,8 +966,10 @@ content-publish:
     compositesearch.index.name = "compositesearch"
     search.document.type = "cs"
     enableDIALContextUpdate = "Yes"
-
-    cloud_storage_type="{{ cloud_store }}"
+    gcloud_client_key: "{{ cloud_storage_key }}"
+    gcloud_private_secret: "{{ cloud_storage_secret }}"
+    gcloud_storage_bucket: "{{ cloud_storage_container }}"
+    cloud_storage_type="{{ cloud_service_provider }}"
     cloud_storage_key="{{ cloud_storage_key }}"
     cloud_storage_secret="{{ cloud_storage_secret }}"
     cloud_storage_container="{{ cloud_storage_container }}"
@@ -1008,7 +1010,7 @@ qrcode-image-generator:
         margin=1
     }
 
-    cloud_storage_type="{{ cloud_store }}"
+    cloud_storage_type="{{ cloud_service_provider }}"
     cloud_storage_key="{{ cloud_storage_key }}"
     cloud_storage_secret="{{ cloud_storage_secret }}"
     cloud_storage_container="{{ cloud_storage_container }}"
@@ -1219,7 +1221,7 @@ live-node-publisher:
     search.document.type = "cs"
     enableDIALContextUpdate = "Yes"
 
-    cloud_storage_type="{{ cloud_store }}"
+    cloud_storage_type="{{ cloud_service_provider }}"
     azure_storage_key="{{ sunbird_public_storage_account_name }}"
     azure_storage_secret="{{ sunbird_public_storage_account_key }}"
     azure_storage_container="{{ azure_public_container }}"
